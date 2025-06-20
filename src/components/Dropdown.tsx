@@ -40,7 +40,7 @@ function Dropdown({ categories }: { categories: Category[] }) {
             animate={{ opacity: 1, scaleY: 1 }}
             exit={{ opacity: 0, scaleY: 0.75 }}
             transition={{ duration: 0.25 }}
-            className="absolute left-0 top-full w-screen bg-indigo-950 border border-gray-200 shadow-lg z-50 origin-top"
+            className="absolute left-0 top-full w-screen bg-indigo-950 shadow-lg z-50 origin-top"
           >
             <div className="max-w-6xl mx-auto px-4 py-4">
               <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
@@ -48,6 +48,7 @@ function Dropdown({ categories }: { categories: Category[] }) {
                   <Link
                     key={category.id}
                     href={`/category/${category.slug}`}
+                    onClick={() => setIsOpen(false)}
                     className="block px-4 py-2 text-[18px] text-white transition-colors hover:text-pink-400"
                   >
                     <span className="flex before:-inset-1 before:block before:h-5 before:w-2 before:-skew-y-10 before:bg-pink-500 before:py-2">

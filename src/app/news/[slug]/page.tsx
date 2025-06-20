@@ -1,11 +1,10 @@
 import NewsDetail from "@/components/NewsDetail";
 import { getNewsBySlug } from "@/services/getNewsBySlug";
-import { s } from "framer-motion/client";
 
 export default async function NewsPage({
   params,
 }: {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
   const news = await getNewsBySlug(slug);
@@ -19,3 +18,4 @@ export default async function NewsPage({
     </div>
   );
 }
+export const dynamic = "force-dynamic";

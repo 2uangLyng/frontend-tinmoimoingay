@@ -8,22 +8,23 @@ export default function NewsList({
   news: News[];
   singleColumn?: boolean;
 }) {
-  console.log("NewsList component rendered with news:", news);
   if (!news || news.length === 0) {
-    return <p className="text-gray-500">No news available</p>;
+    return (
+      <div className="flex items-center justify-center p-4 min-h-[100px]bg-gray-100 rounded-md shadow max-w-7xl mx-auto">
+        <p className="text-gray-500">Không có tin tức !</p>
+      </div>
+    );
   }
   return (
     <div
       className={`grid gap-4 ${
-        singleColumn
-          ? "grid-cols-1"
-          : "grid-cols-1 md:grid-cols-2 lg:grid-cols-3"
+        singleColumn ? "grid-cols-1" : "grid-cols-1 md:grid-cols-2 "
       }`}
     >
       {news.map((item) => (
         <div
           key={item.id}
-          className="flex flex-col md:flex-row bg-white p-4 rounded-md shadow hover:shadow-lg transition-shadow"
+          className="flex flex-col md:flex-row bg-white p-4 rounded-md shadow hover:shadow-lg transition-shadow w-full min-h-[250px]"
         >
           {/* Thumbnail */}
           <div className="w-full md:w-1/3 flex-shrink-0">
@@ -32,7 +33,7 @@ export default function NewsList({
               alt={item.title}
               width={400}
               height={200}
-              className="w-full h-40 md:h-32 object-cover rounded-md shadow mb-2 md:mb-0 md:mr-4"
+              className="w-full h-full object-cover rounded-md shadow mb-2 md:mb-0 md:mr-4"
             />
           </div>
 

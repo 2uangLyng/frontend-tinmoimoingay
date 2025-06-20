@@ -10,29 +10,11 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "./ui/sidebar";
-import { getAllCategories } from "@/services/getCategories";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { Category } from "@/lib/Category";
 
-export default function SideBar() {
-  const [categories, setCategories] = useState<
-    { name: string; slug: string }[]
-  >([]);
-
+export default function SideBar({ categories }: { categories: Category[] }) {
   const pathname = usePathname();
-
-  useEffect(() => {
-    async function fetchCategories() {
-      try {
-        const categories = await getAllCategories();
-        setCategories(categories);
-      } catch (error) {
-        console.error("Failed to fetch categories:", error);
-      }
-    }
-    fetchCategories();
-  }, []);
-
   return (
     <Sidebar className="w-full md:w-64" variant="floating">
       <SidebarHeader className="p-4">

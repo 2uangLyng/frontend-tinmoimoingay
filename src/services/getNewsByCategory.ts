@@ -1,5 +1,5 @@
 // services/getNewsByCategory.ts
-export async function getNewByCategory(slug: string) {
+export async function getNewByCategorySlug(slug: string) {
   try {
     const res = await fetch(
       `${process.env.NEXT_PUBLIC_API_BASE_URL}/categories/${slug}`,
@@ -13,8 +13,6 @@ export async function getNewByCategory(slug: string) {
 
     const result = await res.json();
 
-    console.log("✔️ Fetched result for", slug, result);
-
     // Kiểm tra xem result có phải object và có result.news là mảng
     if (result && Array.isArray(result.news)) {
       return result.news;
@@ -26,4 +24,3 @@ export async function getNewByCategory(slug: string) {
     return [];
   }
 }
-  

@@ -54,7 +54,12 @@ const NavHomepage = ({ categories }: { categories: Category[] }) => {
                 <Link
                   key={category.id}
                   href={`/category/${category.slug}`}
-                  className="text-black hover:text-gray-900 px-3 py-2 text-sm font-medium transition-colors"
+                  className={`text-black hover:text-gray-900 px-3 py-2 text-sm font-medium transition-colors
+                    ${
+                      pathname === `/category/${category.slug}`
+                        ? "text-red-500"
+                        : ""
+                    }`}
                 >
                   {category.name}
                 </Link>
